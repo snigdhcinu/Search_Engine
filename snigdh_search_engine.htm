@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
 <html>
 <head>
     <title>Snigdh</title>
@@ -41,15 +43,21 @@
             </td>
                 </tr>
     </table>
-    
-    <div id="searchbar" align="center" style="position: relative;left:  305px;top:-30;width: 10px;height: 45px">
-        <input id="searchbar" type="search"placeholder="   Search" style="position: relative;left: 110px; width:500px; height:45px;border-radius: 20px;left">
+
+    <div align="center" style="position: relative;left:  300px;width: 10px;height: 45px">
+        <input id="searchbar" class="searchbar" type="search"placeholder="   Search" style="position: absolute;left: 110px; width:500px; height:50px;top: -30px;border-radius: 20px;text-indent: 15px">
 
         <br><br><br><br>
     </div>
     <div align="center" style="position: relative;right: 15px">
-        <input type="button" value="Snigdh Search" style="height: 30px">
+<!--         <form id="form">
+ -->        <input type="button" value="Snigdh Search" onclick="normSearch()" style="height: 30px">
         <input type="button" value="I'm Feeling Lucky" style="height: 30px;position:relative;right: -10px">
+     <!--    <div class="input">
+            <button >Snigdh Search</button>
+            <button>I'm Feeling Lucky</button>
+        </div>
+        </form> -->
     </div>
     <footer>
         <br><br>
@@ -61,9 +69,49 @@
                 <a href="chinese.htm">Chinese,</a>
                 <a href="others.htm">more...</a>
             </p>
+            <div id="result"></div>
         </div>
     </footer>
 </body>
+<script>
+
+
+function normSearch()
+{
+    var query=document.getElementById("searchbar").value;
+    var key="d4621e0d76d814c6af399a9b0d19a4fc";
+    var url="http://api.serpstack.com/search?access_key="+key+"&type=web&query="+query;
+    var result;
+    
+        // get request with a call back function
+    
+    let request=new XMLHttpRequest();
+    request.open('Get',url);
+    request.responseType='text';
+    request.onload=function()
+    {
+        document.write(request.response);
+        //document.write(request.response);
+        // request.response.organic_results.forEach(res=>{
+        //     result=`
+        //     <h1>${res.title}</h1>
+
+        //     `;
+        // })
+    }
+    request.send();
+}
+
+// // Get request with a call-back function.
+// const Http = new XMLHttpRequest();
+// Http.open("GET", url);
+// Http.send();
+// Http.onreadystatechange = function(){
+
+//   console.log(Http.responseText)
+// }
+// //djfkjdkfksd
+</script>
 
 
 </html>
