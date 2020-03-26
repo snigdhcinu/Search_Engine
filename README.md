@@ -1,5 +1,5 @@
 # Search_Engine
-My very own search engine
+My very own search engine, using serpstack API.
 
 In order to run this application, follow the following steps :-
     1.Copy paste all the files of Search_Engine into your machine.
