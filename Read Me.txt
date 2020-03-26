@@ -8,3 +8,4 @@ OBJECTIVES :-
                 7. Learnt the application of footer element. 
                 8. How to use datalist.
                 9. The doctype and metacharset description in the beginning of the html document. 
+               10. refernce :- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data
