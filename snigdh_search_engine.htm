@@ -52,7 +52,7 @@
     <div align="center" style="position: relative;right: 15px">
 <!--         <form id="form">
  -->        <input type="button" value="Snigdh Search" onclick="normSearch()" style="height: 30px">
-        <input type="button" value="I'm Feeling Lucky" style="height: 30px;position:relative;right: -10px">
+        <input type="button" value="I'm Feeling Lucky" onclick="topSearch()" style="height: 30px;position:relative;right: -10px">
      <!--    <div class="input">
             <button >Snigdh Search</button>
             <button>I'm Feeling Lucky</button>
@@ -75,29 +75,65 @@
 </body>
 <script>
 
-
+// to return all results.
 function normSearch()
 {
     var query=document.getElementById("searchbar").value;
     var key="d4621e0d76d814c6af399a9b0d19a4fc";
     var url="http://api.serpstack.com/search?access_key="+key+"&type=web&query="+query;
-    var result;
+    var result='';
     
         // get request with a call back function
     
     let request=new XMLHttpRequest();
     request.open('Get',url);
-    request.responseType='text';
+    request.responseType='json';
+    var data=request.response;
     request.onload=function()
     {
-        document.write(request.response);
-        //document.write(request.response);
-        // request.response.organic_results.forEach(res=>{
-        //     result=`
-        //     <h1>${res.title}</h1>
+       // console.log(request.response.organic_results);
+        request.response.organic_results.forEach(res=>{
+            result="<h1>"+res.title+"</h1><br><a href="+res.url+">"+res.url+"</a><p>"+res.snippet+"</p>";
+           // var node=document.createNode(result);
+            var div=document.getElementById("result");
+            //div.appendChild(node);
+            div.innerHTML+=result;
+        })
+    }
+    request.send();
+}
+// To return top search result.
+function topSearch()
+{
 
-        //     `;
-        // })
+     var query=document.getElementById("searchbar").value;
+    var key="d4621e0d76d814c6af399a9b0d19a4fc";
+    var url="http://api.serpstack.com/search?access_key="+key+"&type=web&query="+query;
+    var result='';
+    
+        // get request with a call back function
+    
+    let request=new XMLHttpRequest();
+    request.open('Get',url);
+    request.responseType='json';
+    var data=request.response;
+    request.onload=function()
+    {
+       // console.log(request.response.organic_results);
+       var i=0
+        request.response.organic_results.forEach(res=>{
+            if(i<1)
+            {
+            result="<h1>"+res.title+"</h1><br><a href="+res.url+">"+res.url+"</a><p>"+res.snippet+"</p>";
+           // var node=document.createNode(result);
+            var div=document.getElementById("result");
+            //div.appendChild(node);
+            div.innerHTML+=result;
+            i++;
+            }
+            else 
+                return;
+        })
     }
     request.send();
 }
