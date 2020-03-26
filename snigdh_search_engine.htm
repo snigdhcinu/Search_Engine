@@ -94,7 +94,7 @@ function normSearch()
     {
        // console.log(request.response.organic_results);
         request.response.organic_results.forEach(res=>{
-            result="<h1>"+res.title+"</h1><br><a href="+res.url+" target="_blank">"+res.url+"</a><p>"+res.snippet+"</p>";
+            result="<h1>"+res.title+"</h1><br><a href="+res.url+">"+res.url+"</a><p>"+res.snippet+"</p>";
            // var node=document.createNode(result);
             var div=document.getElementById("result");
             //div.appendChild(node);
@@ -126,7 +126,7 @@ function topSearch()
         request.response.organic_results.forEach(res=>{
             if(i<1)
             {
-            result="<h1>"+res.title+"</h1><br><a href="+res.url+"target="_blank">"+res.url+"</a><p>"+res.snippet+"</p>";
+            result="<h1>"+res.title+"</h1><br><a href="+res.url+">"+res.url+"</a><p>"+res.snippet+"</p>";
            // var node=document.createNode(result);
             var div=document.getElementById("result");
             //div.appendChild(node);
